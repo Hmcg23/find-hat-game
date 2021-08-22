@@ -9,6 +9,8 @@ const pathCharacter = '*';
 class Field {
   constructor(field) {
       this.field = field;
+      this.x = 0;
+      this.y = 0;
   }
   print() {
       let printedField = '';
@@ -19,21 +21,20 @@ class Field {
       console.log(printedField);
   }
 
-  askInput() {
-      const tempInput = prompt('Enter W, A, S, or D to navigate: ');
-      const input = tempInput.toLowerCase();
-      if (input === 'w') {
-          // do something
-      } else if (input === 'a') {
-          // do something
-      } else if (input === 's') {
-          // do something
-      } else if (input === 'd') {
-          // do something
+  askInput(input) {
+      input = prompt('Enter W, A, S, or D to navigate: ');
+      if (input.toLowerCase === 'w') {
+          this.y++;
+      } else if (input.toLowerCase === 'a') {
+          this.x--;
+      } else if (input.toLowerCase === 's') {
+          this.y--;
+      } else if (input.toLowerCase === 'd') {
+          this.x++;
       }
   }
 
-  testWin() {
+  checkGame() {
       // do something
   }
 
@@ -44,9 +45,16 @@ class Field {
 }
 
 const myField = new Field([
-    ['*', '░', 'O'],
-    ['░', 'O', '░'],
-    ['░', '^', '░'],
+    [pathCharacter, fieldCharacter, hole],
+    [fieldCharacter, hole, fieldCharacter],
+    [fieldCharacter, hat, fieldCharacter],
   ]);
 
-myField.print();
+function playGame() {
+    myField.print();
+    myField.askInput();
+    myField.isOut();
+    myField.checkGame();
+}
+
+playGame();
