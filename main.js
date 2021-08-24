@@ -49,27 +49,35 @@ class Field {
 
 
   generateField() {
-      const newField = [];
-      /*
-      const height = prompt('height (must be more than 3):');
-      const width = prompt('width (must be more than 3:');
-      const percentage = prompt('percentage of holes:');
-      */
-     let height = 10;
-     let width = 10;
-      for (let i = 0; i < height; i++) {
-          const heightArr = [];
-          newField.push(heightArr);
-          for (let j = 0; j < width; j++) {
-              newField[i].push(fieldCharacter);
-
+    const newField = [];
+    const height = 10;
+    const width = 20;
+    const percentageOfHoles = 50;
+    const holeAmount = Math.floor(percentageOfHoles / (width * height) * 100);
+    const randY = Math.floor(Math.random() * height);
+    const randX = Math.floor(Math.random() * width);
+    console.log(percentageAmount);
+    // Creates field of play, depending on given width and height
+    for (let i = 0; i < height; i++) {
+        const heightArr = [];
+        newField.push(heightArr);
+        for (let j = 0; j < width; j++) {
+            newField[i].push(fieldCharacter);
           }
       }
-      newField[Math.floor(Math.random() * height)][Math.floor(Math.random() * width)] = hat;
+    for (let i = 0; i < holeAmount; i++) {
+        const holeY = Math.floor(Math.random() * height);
+        const holeX = Math.floor(Math.random() * width);
+        if (newField[holeY][holeX] === fieldCharacter) {
+            newField[holeY][holeX] === hole;
+        }
+    }
+
+      // places the hat, and the path character
+      newField[randY][randX] = hat;
       newField[0][0] = pathCharacter;
       this.field = newField;
-      this.print();      
-  }
+}
 
   playGame() {
     let gameOver = this.gameStatus();
