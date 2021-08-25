@@ -50,13 +50,12 @@ class Field {
 
   generateField() {
     let newField = [];
-    const height = 70;
-    const width = 210;
-    const percentageOfHoles = 50;
+    const height = 10;
+    const width = 20;
+    const percentageOfHoles = 100;
     const holeAmount = Math.floor((height * width) * (percentageOfHoles * (1 / 100)));
     const randY = Math.floor(Math.random() * height);
     const randX = Math.floor(Math.random() * width);
-    console.log(holeAmount);
     // Creates field of play, depending on given width and height
     for (let i = 0; i < height; i++) {
         const heightArr = [];
